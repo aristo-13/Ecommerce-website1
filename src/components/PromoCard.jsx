@@ -1,5 +1,5 @@
 import { FaArrowRight } from 'react-icons/fa6'
-import store2 from '../../public/store2.jpg'
+import store2 from '/store2.jpg'
 
 function PromoCard() {
   return (

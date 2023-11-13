@@ -83,7 +83,7 @@ function NewArrivals() {
 
   return (
     <div className="flex w-full">
-       <div className='w-full duration-300' style={{marginRight: productDetails && !(screenWidth < 800)? "300px" : "0"}}>
+       <div className='w-full duration-300' style={{marginRight: productDetails && !(screenWidth < 800)? "400px" : "0"}}>
 
          <div className="w-full flex justify-between items-center p-3 border-b">
             <span className="h-full border p-2"> All Products</span>

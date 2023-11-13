@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthenticationContext } from "../Context/AuthContext";
 import ViewListIcon from '@mui/icons-material/ViewList';
 
-function Header( {setShowCart} ) {
+function Header( {setShowCart,setShowSideNav} ) {
  const [showProfile,setshowProfile] = useState(false)
  const {user,username,Logout} = useContext(AuthenticationContext)
  const navigate = useNavigate()
@@ -22,19 +22,22 @@ function Header( {setShowCart} ) {
     }
  }
 
+ const navigateToBrands = () => {   
+  navigate('/main')
+}
 
   return (
     <header className="flex flex-col w-full border-b sticky top-0 z-20">
        <div className="w-full flex justify-center p-1  bg-DarkBlue text-white"><span className="flex"><span className="hidden md:block">shop now and </span> GET 20% OFF for your first order <Link className='hidden md:block underline'>Shop Now</Link></span></div>
         <nav className="flex justify-between bg-white p-5 items-center">
             <div className="flex gap-5">
-              <button className="md:hidden text-DarkBlue"><ViewListIcon /></button>
+              <button onClick={() => setShowSideNav(true)} className="md:hidden text-DarkBlue"><ViewListIcon /></button>
               <div className="text-2xl cursor-pointer flex">🛒 <span className="hidden md:block">ShopRich</span></div>
             </div>
             <ul className="hidden md:flex gap-5 font-medium text-DarkBlue">
                 <NavLink className='px-3 py-1 rounded-xl' to='/main'>Shop</NavLink>
                 <NavLink className='px-3 py-1 rounded-xl' to='/main/newarrivals'>New arrival</NavLink>
-                <a className='px-3 py-1 rounded-xl' href='#brands'>Brands</a>
+                <a onClick={navigateToBrands} className='px-3 py-1 rounded-xl' href='#brands'>Brands</a>
             </ul>
 
             <div className="flex gap-4  text-DarkBlue">
