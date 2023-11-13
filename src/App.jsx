@@ -4,6 +4,8 @@ import Main from "./pages/Main"
 import Layout from "./pages/Layout"
 import { createBrowserRouter,createRoutesFromElements,Route,RouterProvider } from "react-router-dom"
 import ProtectiveRoute from "./components/ProtectiveRoute"
+import Home from "./pages/Home"
+import NewArrivals from "./pages/NewArrivals"
 
 
 function App() {
@@ -12,8 +14,9 @@ function App() {
      <Route path="/" element={<Layout />}>
          <Route path="/" element={<SignIn />} />
          <Route path="/signup" element={<SignUp />}/>
-         <Route path="/main" element={<ProtectiveRoute><Main /></ProtectiveRoute>}>
-           
+         <Route path="/main" element={<Main />}>
+            <Route path='/main' element={<Home />} />
+            <Route path="/main/newarrivals" element={<NewArrivals />} />
          </Route>
      </Route>
   )
