@@ -12,62 +12,62 @@ function NewArrivals() {
    },
    {
      product: "🥼",
-     price: 12,
+     price: 202,
      name: "Shirt"
    },
    {
      product: "🩳",
-     price: 12,
+     price: 340,
      name: "Shirt"
    },
    {
      product: "👘",
-     price: 12,
+     price: 552,
      name: "Shirt"
    },
    {
      product: "👔",
-     price: 12,
+     price: 79,
      name: "Shirt"
    },
    {
      product: "👗",
-     price: 12,
+     price: 82,
      name: "Shirt"
    },
    {
      product: "👚",
-     price: 12,
+     price: 142,
      name: "Shirt"
    },
    {
      product: "👖",
-     price: 12,
+     price: 220,
      name: "Shirt"
    },
    {
      product: "⌚",
-     price: 12,
+     price: 120,
      name: "Shirt"
    },
    {
      product: "☎️",
-     price: 12,
+     price: 100,
      name: "Shirt"
    },
    {
      product: "🩳",
-     price: 12,
+     price: 120,
      name: "Shirt"
    },
    {
      product: "👗",
-     price: 12,
+     price: 112,
      name: "Shirt"
    },
    {
      product: "👕",
-     price: 12,
+     price: 212,
      name: "Shirt"
    },
  ]
@@ -90,7 +90,7 @@ function NewArrivals() {
             </div>
          </div>
           
-          <div>
+          <div className='w-full flex flex-wrap gap-2 justify-center p-4'>
               {
                 products.map((product) => (
                    <ProductCard product={product}/>

@@ -3,7 +3,7 @@ import {FaFilter} from "react-icons/fa"
 function AllProSideNav() {
   return (
     <div className="w-[200px] min-h-[400px] border">
-    <h1 className="w-full flex items-center gap-3 justify-center bg-LightBlue text-white font-medium text-[1.2rem] text-center p-2"><FaFilter />Sort By</h1>
+    <h1 className="w-full flex items-center gap-3 justify-center bg-blue-800 text-white font-medium text-[1.2rem] text-center p-4"><FaFilter />Sort By</h1>
          <div className="p-3">
            <details>
               <summary className='font-medium text-DarkBlue'>
