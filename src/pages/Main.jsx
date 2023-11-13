@@ -1,26 +1,22 @@
-import { AuthenticationContext } from "../Context/AuthContext"
-import { useContext } from "react"
-import { useNavigate } from "react-router-dom"
+import { Outlet } from "react-router-dom"
+import Header from "../components/Header"
+import Cart from "../components/Cart"
+import { useState } from "react"
+import Footer from "../components/Footer"
 
 function Main() {
- const {user,Logout} = useContext(AuthenticationContext)
- const navigate = useNavigate()
-
-
- const handleSignOut = async() => {
-    try {
-      await Logout()
-       navigate('/')
-    } catch (error) {
-       console.log(error.message)
-    }
- }
+ const [showCart,setShowCart] = useState(false)
+ 
 
   return (
-    <div>
-       main {user && user.email}
-
-       <button onClick={handleSignOut}>Logout</button>
+    <div className="relative">
+        <Header setShowCart={setShowCart}/>
+           <main className="w-full md:w-[95%] md:mx-auto">
+             <Outlet />
+           </main>
+         <Footer />
+         {showCart && <div className="fixed top-0 left-0 w-full h-screen bg-black/10 z-30" onClick={() => setShowCart(false)}></div>}
+        <Cart setShowCart={setShowCart} showCart={showCart}/>
     </div>
   )
 }
