@@ -2,8 +2,15 @@ import AppsIcon from '@mui/icons-material/Apps';
 import AllProSideNav from "../components/AllProSideNav"
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ProductCard from '../components/ProductCard';
+import { useState } from 'react';
+import UseScreenWidth from '../hooks/useScreenWidth';
+
 
 function NewArrivals() {
+ const [productDetails,setProductDetails] = useState(false)
+ const screenWidth = UseScreenWidth()
+
+
  const products = [
    {
      product: "👕",
@@ -76,28 +83,28 @@ function NewArrivals() {
 
   return (
     <div className="flex w-full">
-       <AllProSideNav />
-       <div className='w-full'>
+       <div className='w-full duration-300' style={{marginRight: productDetails && !(screenWidth < 800)? "300px" : "0"}}>
 
          <div className="w-full flex justify-between items-center p-3 border-b">
             <span className="h-full border p-2"> All Products</span>
             <div className='flex items-center gap-2'>
-               <input type="search"  className='border p-1 rounded-full' placeholder='search' />
-                 <div className='flex gap-1'>
+               <input type="search"  className='hidden md:block border p-1 rounded-full' placeholder='search' />
+                 <div className='hidden md:flex gap-1'>
                     <button className='p-1 border'><ViewListIcon /></button>
                     <button className='p-1 border'><AppsIcon /></button>
                  </div>
             </div>
          </div>
           
-          <div className='w-full flex flex-wrap gap-2 justify-center p-4'>
+          <div className='w-full flex flex-wrap gap-2 justify-center pt-3 cursor-pointer'>
               {
                 products.map((product) => (
-                   <ProductCard product={product}/>
+                   <ProductCard product={product} setProductDetails={setProductDetails}/>
                 ))
               }
           </div>
        </div>
+         <AllProSideNav setProductDetails={setProductDetails} productDetails={productDetails}/>
     </div>
   )
 }

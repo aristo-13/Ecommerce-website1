@@ -2,9 +2,10 @@ import { Link, NavLink } from "react-router-dom"
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
 import { useContext, useState } from "react";
-import {FaX} from 'react-icons/fa6'
+import {FaX,} from 'react-icons/fa6'
 import { useNavigate } from "react-router-dom";
 import { AuthenticationContext } from "../Context/AuthContext";
+import ViewListIcon from '@mui/icons-material/ViewList';
 
 function Header( {setShowCart} ) {
  const [showProfile,setshowProfile] = useState(false)
@@ -26,7 +27,10 @@ function Header( {setShowCart} ) {
     <header className="flex flex-col w-full border-b sticky top-0 z-20">
        <div className="w-full flex justify-center p-1  bg-DarkBlue text-white"><span className="flex"><span className="hidden md:block">shop now and </span> GET 20% OFF for your first order <Link className='hidden md:block underline'>Shop Now</Link></span></div>
         <nav className="flex justify-between bg-white p-5 items-center">
-            <div className="text-2xl cursor-pointer flex">🛒 <span className="hidden md:block">ShopRich</span></div>
+            <div className="flex gap-5">
+              <button className="md:hidden text-DarkBlue"><ViewListIcon /></button>
+              <div className="text-2xl cursor-pointer flex">🛒 <span className="hidden md:block">ShopRich</span></div>
+            </div>
             <ul className="hidden md:flex gap-5 font-medium text-DarkBlue">
                 <NavLink className='px-3 py-1 rounded-xl' to='/main'>Shop</NavLink>
                 <NavLink className='px-3 py-1 rounded-xl' to='/main/newarrivals'>New arrival</NavLink>
