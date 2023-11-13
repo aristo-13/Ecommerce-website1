@@ -5,7 +5,7 @@ import Layout from "./pages/Layout"
 import { createBrowserRouter,createRoutesFromElements,Route,RouterProvider } from "react-router-dom"
 import ProtectiveRoute from "./components/ProtectiveRoute"
 import Home from "./pages/Home"
-import NewArrivals from "./pages/NewArrivals"
+import NewArrivals from "./pages/AllProducts"
 
 
 function App() {
