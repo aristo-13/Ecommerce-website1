@@ -13,7 +13,7 @@ function NewArrivals() {
  const [productDetails,setProductDetails] = useState(false)
  const screenWidth = UseScreenWidth()
  const {Products,setProducts} = useContext(Context)
-
+ const [grid,setGrid] = useState(true)
 
  console.log(Products)
 
@@ -25,18 +25,18 @@ function NewArrivals() {
             <span className="h-full border p-2"> All Products</span>
             <div className='flex items-center gap-2'>
                <input type="search"  className='hidden md:block border p-1 rounded-full' placeholder='search' />
-                 <div className='hidden md:flex gap-1'>
-                    <button className='p-1 border'><ViewListIcon /></button>
-                    <button className='p-1 border'><AppsIcon /></button>
+                 <div className='flex gap-1'>
+                    <button style={{backgroundColor: grid? "white" : "#0B2447" , color: grid? "#0B2447" : "white"}} className='p-1 border' onClick={()=> setGrid(false)}><ViewListIcon /></button>
+                    <button style={{backgroundColor: grid? "#0B2447" : "white" , color: grid? "white" : "#0B2447"}} className='p-1 border' onClick={()=> setGrid(true)}><AppsIcon /></button>
                  </div>
             </div>
          </div>
           
-          <div className='w-full flex flex-wrap gap-2 justify-center pt-3 cursor-pointer'>
-             {!(Products.length > 0) && <Loading styles="w-[min(100%,250px)] h-[270px] border p-2 shadow bg-black/60 rounded-xl" Instances={12}/> }
+          <div className='w-full flex flex-wrap gap-2 justify-center pt-3 cursor-pointer items-center' /* style={{flexDirection: grid? "row": "column"}} */>
+             {!(Products.length > 0) && <Loading  styles={`${grid? "w-[min(100%,250px)] h-[260px]" : "w-[70%] h-[100px]"} border p-2 shadow bg-black/60 rounded-xl`} Instances={12}/> }
               { (Products.length > 0) &&
                 Products.map((product) => (
-                   <ProductCard product={product} setProductDetails={setProductDetails} key={product.id}/>
+                   <ProductCard product={product} setProductDetails={setProductDetails} key={product.id} grid={grid}/>
                 ))
               }
           </div>

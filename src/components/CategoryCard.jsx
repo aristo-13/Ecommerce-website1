@@ -9,7 +9,7 @@ function CategoryCard( {category,img} ) {
  useEffect(() => {
     setTimeout(() => {
         setImg(img)
-    },5000)
+    },1000)
     
  },[])
 

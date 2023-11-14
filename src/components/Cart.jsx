@@ -5,9 +5,22 @@ import { useContext } from 'react'
 import Loading from './Loading'
 
 function Cart( {setShowCart,showCart} ) {
-    const {Cart} = useContext(Context)
+    const {Cart,setCart} = useContext(Context)
     
+
+    const totalAmount = () =>{
+        const amt = Cart.reduce((acc,curr) => {
+            return acc + curr.product.price
+        },0)
+
+        return amt
+    }
    
+    const handleDelete = (id) => {
+        const deleted = Cart.filter((item) => item.id !== id)  
+        console.log(id + "deleted") 
+        setCart(deleted)
+    }
 
 console.log(Cart, "carrrt")
   return (
@@ -22,12 +35,16 @@ console.log(Cart, "carrrt")
         <div className='p-2 flex flex-col gap-3'>
            
             {!(Cart.length > 0) && (
-                  <Loading styles="bg-black/30 rounded border shadow-sm p-2 h-[150px]" Instances={5}/>
+                <p className='text-center'>
+                    {/* <Loading styles="bg-black/30 rounded border shadow-sm p-2 h-[150px]" Instances={5}/> */}
+                  no items
+                </p>
+                
                 )}
             
             { Cart.length > 0 &&
                 Cart.map((cart) => (
-                    <div className='bg-white rounded border shadow-sm p-2' key={cart.id}>
+                    <div className='bg-white rounded border shadow-sm p-2' key={cart.id} onClick={()=> handleDelete(cart.id)}>
                         <div className='w-full flex justify-end p-2 border-b cursor-pointer'><FaX size={10}/></div>
                         <div className='flex justify-between p-1'>
                             <div className='flex gap-1'>
@@ -49,10 +66,10 @@ console.log(Cart, "carrrt")
                 ))
             }
         </div>
-        <div className='sticky bottom-0 w-full flex flex-col bg-white p-4 border-t'>
-            <span className='text-2xl font-bold text-center p-3'>Total Cost: $700 </span>
+       { Cart.length > 0 && <div className='sticky bottom-0 w-full flex flex-col bg-white p-4 border-t'>
+            <span className='text-2xl font-bold text-center p-3'>Total Cost: ${totalAmount()} </span>
             <button className='bg-DarkBlue text-white p-3 rounded-xl'>Pay Now</button>
-        </div>
+        </div>}
     </div>
   )
 }

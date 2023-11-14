@@ -16,8 +16,8 @@ function App() {
          <Route path="/signup" element={<SignUp />}/>
          <Route path="/main" element={<ProtectiveRoute><Main /></ProtectiveRoute>}>
             <Route index element={<Home />} />
-            <Route path="/main/newarrivals" element={<NewArrivals />}>
-               <Route path="/main/newarrivals/:id" element={<NewArrivals />} />
+            <Route path="/main/products" element={<NewArrivals />}>
+               <Route path="/main/products/:id" element={<NewArrivals />} />
             </Route>
          </Route>
      </Route>

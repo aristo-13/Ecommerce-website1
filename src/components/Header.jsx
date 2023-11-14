@@ -13,6 +13,7 @@ function Header( {setShowCart,setShowSideNav} ) {
  const {user,username,Logout} = useContext(AuthenticationContext)
  const {Cart} = useContext(Context)
  const navigate = useNavigate()
+ 
 
 
  const handleSignOut = async() => {
@@ -38,7 +39,7 @@ function Header( {setShowCart,setShowSideNav} ) {
             </div>
             <ul className="hidden md:flex gap-5 font-medium text-DarkBlue">
                 <NavLink className='px-3 py-1 rounded-xl' to='/main'>Shop</NavLink>
-                <NavLink className='px-3 py-1 rounded-xl' to='/main/newarrivals'>New arrival</NavLink>
+                <NavLink className='px-3 py-1 rounded-xl' to='/main/products'>Products</NavLink>
                 <a onClick={navigateToBrands} className='px-3 py-1 rounded-xl' href='#brands'>Brands</a>
             </ul>
 
