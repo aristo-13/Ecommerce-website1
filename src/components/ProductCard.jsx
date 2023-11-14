@@ -2,6 +2,7 @@ import { ArrowRight } from '@mui/icons-material'
 import {BiCart,BiArrowToRight} from 'react-icons/bi'
 import { useContext } from 'react'
 import { Context } from '../Context/DataContext'
+import { Link } from 'react-router-dom'
 
 function ProductCard( {product,setProductDetails}) {
    const { setCart} = useContext(Context)
@@ -26,14 +27,14 @@ function ProductCard( {product,setProductDetails}) {
            <img src={product.images[0] || product.category[image]} className='w-full h-full rounded-xl'/>
         </div>
 
-        <div onClick={showProductDetails} className='flex justify-between items-center border hover:bg-black/10 duration-300'>
+        <Link to={`/main/newarrivals/${product.id}`} onClick={showProductDetails} className='flex justify-between items-center border hover:bg-black/10 duration-300'>
             <div className='flex flex-col p-2'>
                <p className='text-[1.1rem] font font-medium'>${product.price}</p> 
                <p className='uppercase text-DarkBlue/60 text-[0.8rem]'>{product.name}</p>
             </div>
 
              <ArrowRight />
-        </div>
+        </Link>
         
 
         <button onClick={addCart} className=' w-full flex border items-center p-2 rounded-md text-[0.8rem] gap-2 bg-blue-800 text-white shadow-lg'>
