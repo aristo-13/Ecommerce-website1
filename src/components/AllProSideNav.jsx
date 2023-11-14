@@ -6,8 +6,8 @@ import { useContext, useEffect, useState } from 'react'
 
 
 function AllProSideNav( {setProductDetails,productDetails} ) {
- const {Products,setCart} = useContext(Context)
- const [Details,setDetails] = useState([])
+ const {Products,setCart,Cart} = useContext(Context)
+ const [product,setproduct] = useState({})
  const {id} = useParams()
 
 
@@ -17,30 +17,41 @@ function AllProSideNav( {setProductDetails,productDetails} ) {
    
    useEffect(() =>{
     if(Detail){
-      setDetails(Detail)
+      setproduct(Detail)
      }
    },[Detail])
  
 
-   const addCart = () =>{
-    const NewCart = {Details}
+    const addCart = () =>{
+      const NewCart = {product}
+      const itExist = Cart.some((pro) => pro.id === NewCart.id )
 
-    setCart((prevCart) => {
-      return [...prevCart, NewCart]
-    })
-  
-}
+      if(itExist){
+        setCart((prevCart) => {
+          return prevCart
+        })
+      }else{
+        setCart((prevCart) => {
+          return [...prevCart, NewCart]
+        })
+      }
+    
+    
+  }
 
-console.log(Details, "deeeeeeee")
+
   return (
-    <div className="fixed right-[-100%] w-[min(100%,400px)] min-h-[600px] border z-10 bg-white duration-300" style={{right: productDetails? "0": "-100%"}}>
-       <span onClick={() => setProductDetails(false)} className="w-full flex justify-end text-2xl p-2 cursor-pointer">{<BiX />}</span>
-       <div>
-        <div className='w-full h-[250px] px-5 pb-5 pt-3 overflow-hidden rounded-lg'>
-          {Details.images && <img src={Details.images[0]} alt="Product" className='w-full h-full rounded-lg' />}
+    <div className="fixed right-[-100%] w-[min(100%,400px)] border-l z-10 bg-white duration-300  p-3 px-4" style={{right: productDetails? "0": "-100%"}}>
+       <span onClick={() => setProductDetails(false)} className="w-full flex justify-end text-2xl p-1 cursor-pointer">{<BiX />}</span>
+       <div className='w-full h-full'>
+        <div className='w-full h-[200px] px-5 pb-3 pt-1 overflow-hidden rounded-lg'>
+          {product.images && <img src={product.images[0]} alt="Product" className='w-full h-full rounded-lg' />}
         </div>
-         <div>
-
+         <div className='px-5 '>
+             <p className='uppercase font-medium'>{product.title}</p>
+             <p className='text-black/40'>{product.category && product.category.name}</p>
+             <h1>${product.price}</h1>
+             <p className='m-3'>{product.description}</p>
          </div>
 
 

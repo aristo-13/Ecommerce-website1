@@ -5,21 +5,34 @@ import { Context } from '../Context/DataContext'
 import { Link } from 'react-router-dom'
 
 function ProductCard( {product,setProductDetails}) {
-   const { setCart} = useContext(Context)
+   const {setCart,Cart} = useContext(Context)
 
  const showProductDetails = () => {
    setProductDetails(true)
  }
 
 
- const addCart = () =>{
+ /* const addCart = () =>{
      const NewCart = {product}
 
      setCart((prevCart) => {
        return [...prevCart, NewCart]
      })
-   console.log(`cart ${product.id} added`)
+  
  }
+ */
+
+ const addCart = () =>{
+   const NewCart = {product}
+   const q = {...product}
+   const itExist = Cart.some((pro) => pro.id === q.id )
+
+   if(!itExist){
+      setCart((prevCart) => {
+         return [...prevCart, NewCart]
+       })
+   }
+}
 
   return (
     <div className='w-[min(100%,250px)] border p-2 shadow flex flex-col gap-1'>
