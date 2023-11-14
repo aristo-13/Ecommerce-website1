@@ -6,10 +6,12 @@ import {FaX,} from 'react-icons/fa6'
 import { useNavigate } from "react-router-dom";
 import { AuthenticationContext } from "../Context/AuthContext";
 import ViewListIcon from '@mui/icons-material/ViewList';
+import { Context } from "../Context/DataContext";
 
 function Header( {setShowCart,setShowSideNav} ) {
  const [showProfile,setshowProfile] = useState(false)
  const {user,username,Logout} = useContext(AuthenticationContext)
+ const {Cart} = useContext(Context)
  const navigate = useNavigate()
 
 
@@ -45,7 +47,7 @@ function Header( {setShowCart,setShowSideNav} ) {
                 <div className="flex gap-2 items-center">
                     <div className="relative cursor-pointer animate-bounce" onClick={() => setShowCart(true)}>
                         <ShoppingCartIcon/>
-                        <span className="absolute -top-2 -right-2 bg-blue-500 w-[20px] h-[20px] flex items-center justify-center rounded-full  border-3 text-white font-bold">3</span>
+                        <span className="absolute -top-2 -right-2 bg-blue-500 w-[20px] h-[20px] flex items-center justify-center rounded-full  border-3 text-white font-bold">{Cart.length}</span>
                     </div>
                     <div className="relative">
                       <PersonIcon className="cursor-pointer" onClick={() => setshowProfile(true)}/>

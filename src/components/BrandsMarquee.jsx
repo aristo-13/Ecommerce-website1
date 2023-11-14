@@ -41,8 +41,8 @@ function BrandsMarquee() {
        <span className='overlay absolute w-full h-full left-0 z-10 bg-gradient-to-r from-white via-transparent to-white'></span>
             <div className='flex gap-[2rem] p-5 marquee'>
                 {
-                logoNames.map((logo) => (
-                    <div className='w-[15vw] flex-shrink-0 bg-red'>
+                logoNames.map((logo,index) => (
+                    <div className='w-[15vw] flex-shrink-0 bg-red'  key={index}>
                         <img src={logo} className='w-[80%] h-[80%]'/>
                     </div>
                 ))

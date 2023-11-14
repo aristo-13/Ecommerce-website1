@@ -6,42 +6,8 @@ import Loading from './Loading'
 
 function Cart( {setShowCart,showCart} ) {
     const {Cart} = useContext(Context)
-
-/*  const carts = [
-    {
-        img: "👕",
-        price: 76,
-        shipping: 2,
-        description: "Short Knickers"
-    },
-    {
-        img: "🥼",
-        price: 56,
-        shipping: 1,
-        description: "Coat"
-    },
-    {
-        img: "🩳",
-        price: 46,
-        shipping: 1,
-        description: "Short Knickers"
-    },
-    {
-        img: "👕",
-        price: 46,
-        shipping: 1,
-        description: "shirt"
-    },
-    {
-        img: "👔",
-        price: 96,
-        shipping: 3,
-        description: "long sleeves"
-    },
- ]
- */
-
-
+    
+   
 
 
   return (
@@ -60,16 +26,18 @@ function Cart( {setShowCart,showCart} ) {
             
             { Cart.length > 1 &&
                 Cart.map((cart) => (
-                    <div className='bg-white rounded border shadow-sm p-2'>
+                    <div className='bg-white rounded border shadow-sm p-2' key={cart.id}>
                         <div className='w-full flex justify-end p-2 border-b cursor-pointer'><FaX size={10}/></div>
                         <div className='flex justify-between p-1'>
                             <div className='flex gap-1'>
-                                <div className="w-[50px] h-[50px] border flex justify-center items-center">{cart.img}</div>
-                                <div className='uppercase text-[0.9rem]'>{cart.description}</div>
+                                <div className="w-[100px] h-[100px] border flex justify-center items-center overflow-hidden">
+                                    <img src={cart.product.images[0]} className='w-full h-full'/>
+                                </div>
+                                <div className='uppercase text-[1rem] text-black/60'>{cart.product.title}</div>
                             </div>
                             <div className='flex flex-col items-center'>
                                 <span className='text-[10px]'>Price</span>
-                                <span className='font-medium text-DarkBlue'>${cart.price}</span>
+                                <span className='font-medium text-DarkBlue'>${cart.product.price}</span>
                             </div>
                         </div>
                         <div className='w-full flex justify-end border-t p-2'>

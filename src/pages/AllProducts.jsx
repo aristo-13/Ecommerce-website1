@@ -4,82 +4,18 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import ProductCard from '../components/ProductCard';
 import { useState } from 'react';
 import UseScreenWidth from '../hooks/useScreenWidth';
+import { useContext } from 'react';
+import { Context } from '../Context/DataContext';
+import Loading from '../components/Loading';
 
 
 function NewArrivals() {
  const [productDetails,setProductDetails] = useState(false)
  const screenWidth = UseScreenWidth()
+ const {Products,setProducts} = useContext(Context)
 
 
- const products = [
-   {
-     product: "👕",
-     price: 12,
-     name: "Shirt"
-   },
-   {
-     product: "🥼",
-     price: 202,
-     name: "Shirt"
-   },
-   {
-     product: "🩳",
-     price: 340,
-     name: "Shirt"
-   },
-   {
-     product: "👘",
-     price: 552,
-     name: "Shirt"
-   },
-   {
-     product: "👔",
-     price: 79,
-     name: "Shirt"
-   },
-   {
-     product: "👗",
-     price: 82,
-     name: "Shirt"
-   },
-   {
-     product: "👚",
-     price: 142,
-     name: "Shirt"
-   },
-   {
-     product: "👖",
-     price: 220,
-     name: "Shirt"
-   },
-   {
-     product: "⌚",
-     price: 120,
-     name: "Shirt"
-   },
-   {
-     product: "☎️",
-     price: 100,
-     name: "Shirt"
-   },
-   {
-     product: "🩳",
-     price: 120,
-     name: "Shirt"
-   },
-   {
-     product: "👗",
-     price: 112,
-     name: "Shirt"
-   },
-   {
-     product: "👕",
-     price: 212,
-     name: "Shirt"
-   },
- ]
-
-
+ console.log(Products)
 
   return (
     <div className="flex w-full">
@@ -97,9 +33,10 @@ function NewArrivals() {
          </div>
           
           <div className='w-full flex flex-wrap gap-2 justify-center pt-3 cursor-pointer'>
-              {
-                products.map((product) => (
-                   <ProductCard product={product} setProductDetails={setProductDetails}/>
+             {!(Products.length > 1) && <Loading styles="w-[min(100%,250px)] h-[270px] border p-2 shadow bg-black/60 rounded-xl" Instances={12}/> }
+              { (Products.length > 1) &&
+                Products.map((product) => (
+                   <ProductCard product={product} setProductDetails={setProductDetails} key={product.id}/>
                 ))
               }
           </div>

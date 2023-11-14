@@ -72,7 +72,7 @@ function Slider() {
                 <div className='flex gap-2 absolute bottom-3'>
                     {
                         sliderItems.map((item,index)=> (
-                            <div onClick={()=> setCurrIndex(index)} className='w-[20px] h-[4px] bg-white cursor-pointer duration-300' style={{opacity: currIndex === index? "1" : "0.4"}}></div>
+                            <div onClick={()=> setCurrIndex(index)} className='w-[20px] h-[4px] bg-white cursor-pointer duration-300' style={{opacity: currIndex === index? "1" : "0.4"}} key={index}></div>
                         ))
                     }
                 </div>

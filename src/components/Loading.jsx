@@ -10,8 +10,8 @@ function Loading({styles,Instances}) {
     <>
     
     {
-       result.map((instance) => (
-        <div className={styles + " animate-pulse"}>
+       result.map((instance,index) => (
+        <div className={styles + " animate-pulse"} key={index}>
       
         </div>
        ))
