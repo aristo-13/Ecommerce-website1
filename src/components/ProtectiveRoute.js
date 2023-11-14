@@ -12,7 +12,7 @@ if(!user){
    navigate('/')
 }
 
-return children
+ return children
 }
 
 export default ProtectiveRoute

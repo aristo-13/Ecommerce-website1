@@ -5,7 +5,7 @@ import { auth } from "../../firebase/firebaseConfig"
 
 export const AuthenticationContext = createContext('')
 
- export default function AuthContext( {children} ) {
+ export default function AuthContext( {children} ){
       const [user,setUser] = useState({})
       const [username,setUserName] = useState(null)
 

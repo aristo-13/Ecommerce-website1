@@ -4,6 +4,8 @@ import Cart from "../components/Cart"
 import { useState } from "react"
 import Footer from "../components/Footer"
 import SideNav from "../components/SideNav"
+import DataContext from "../Context/DataContext"
+
 
 function Main() {
  const [showCart,setShowCart] = useState(false)
@@ -11,7 +13,8 @@ function Main() {
  
 
   return (
-    <div className="relative">
+    <DataContext>
+     <div className="relative">
       {showSideNav && <div className="fixed top-0 left-0 w-full h-screen bg-black/70 z-30" onClick={() => setShowSideNav(false)}></div>}
       <SideNav  showSideNav={showSideNav} setShowSideNav={setShowSideNav}/>
         <Header setShowCart={setShowCart} setShowSideNav={setShowSideNav}/>
@@ -22,6 +25,8 @@ function Main() {
          {showCart && <div className="fixed top-0 left-0 w-full h-screen bg-black/10 z-30" onClick={() => setShowCart(false)}></div>}
         <Cart setShowCart={setShowCart} showCart={showCart}/>
     </div>
+    </DataContext>
+    
   )
 }
 

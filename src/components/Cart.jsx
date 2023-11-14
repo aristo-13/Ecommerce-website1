@@ -1,9 +1,13 @@
 import {FaX,FaCartShopping} from 'react-icons/fa6'
 import Increment from './Increment'
+import { Context } from '../Context/DataContext'
+import { useContext } from 'react'
+import Loading from './Loading'
 
 function Cart( {setShowCart,showCart} ) {
+    const {Cart} = useContext(Context)
 
- const carts = [
+/*  const carts = [
     {
         img: "👕",
         price: 76,
@@ -35,14 +39,14 @@ function Cart( {setShowCart,showCart} ) {
         description: "long sleeves"
     },
  ]
-
+ */
 
 
 
 
   return (
     <div style={{position: "fixed" , top: "0" , right: showCart? "0" : "-100%" }} className=" h-screen w-[min(100%,400px)] bg-white px-2 border overflow-auto rounded-l-md shadow-2xl duration-300 z-30">
-        <div className='w-full flex justify-between p-4 items-center sticky top-0 bg-white border-b'>
+        <div className='w-full flex justify-between p-4 items-center sticky top-0 bg-white border-b z-10'>
             <span className='flex items-center text-2xl text-DarkBlue gap-3'>
                 <FaCartShopping />
                  <span>Cart</span>
@@ -50,8 +54,12 @@ function Cart( {setShowCart,showCart} ) {
             <FaX onClick={() => setShowCart(false)} className='cursor-pointer'/>
         </div>
         <div className='p-2 flex flex-col gap-3'>
-            {
-                carts.map((cart) => (
+            {!(Cart.length > 1) && (
+                  <Loading styles="bg-black/30 rounded border shadow-sm p-2 h-[150px]" Instances={5}/>
+                )}
+            
+            { Cart.length > 1 &&
+                Cart.map((cart) => (
                     <div className='bg-white rounded border shadow-sm p-2'>
                         <div className='w-full flex justify-end p-2 border-b cursor-pointer'><FaX size={10}/></div>
                         <div className='flex justify-between p-1'>
