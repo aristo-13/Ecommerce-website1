@@ -15,7 +15,7 @@ function NewArrivals() {
  const {Products,setProducts} = useContext(Context)
  const [grid,setGrid] = useState(true)
 
- console.log(Products)
+ 
 
   return (
     <div className="flex w-full ">

@@ -17,12 +17,11 @@ function Cart( {setShowCart,showCart} ) {
     }
    
     const handleDelete = (id) => {
-        const deleted = Cart.filter((item) => item.id !== id)  
-        console.log(id + "deleted") 
-        setCart(deleted)
+        const newItems = Cart.filter((item) => item.product.id !== id)  
+        setCart(newItems)
     }
 
-console.log(Cart, "carrrt")
+Cart.length > 0 && console.log(Cart[0].product.id, "carrrt")
   return (
     <div style={{position: "fixed" , top: "0" , right: showCart? "0" : "-100%" }} className=" h-screen w-[min(100%,400px)] bg-white px-2 border overflow-auto rounded-l-md shadow-2xl duration-300 z-30">
         <div className='w-full flex justify-between p-4 items-center sticky top-0 bg-white border-b z-10'>
@@ -44,12 +43,12 @@ console.log(Cart, "carrrt")
             
             { Cart.length > 0 &&
                 Cart.map((cart) => (
-                    <div className='bg-white rounded border shadow-sm p-2' key={cart.id} onClick={()=> handleDelete(cart.id)}>
+                    <div className='bg-white rounded border shadow-sm p-2' key={cart.id} onClick={()=> handleDelete(cart.product.id)}>
+                        {console.log(cart)}
                         <div className='w-full flex justify-end p-2 border-b cursor-pointer'><FaX size={10}/></div>
                         <div className='flex justify-between p-1'>
                             <div className='flex gap-1'>
                                 <div className="w-[100px] h-[100px] border flex justify-center items-center overflow-hidden">
-                                    {console.log(cart, "thus")}
                                     { <img src={cart.product.images[0]} className='w-full h-full'/>}
                                 </div>
                                 <div className='uppercase text-[1rem] text-black/60'>{cart.product.title}</div>

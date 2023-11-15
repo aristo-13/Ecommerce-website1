@@ -24,19 +24,10 @@ function AllProSideNav( {setProductDetails,productDetails} ) {
 
     const addCart = () =>{
       const NewCart = {product}
-      const itExist = Cart.some((pro) => pro.id === NewCart.id )
-
-      if(itExist){
-        setCart((prevCart) => {
-          return prevCart
-        })
-      }else{
+      
         setCart((prevCart) => {
           return [...prevCart, NewCart]
         })
-      }
-    
-    
   }
 
 

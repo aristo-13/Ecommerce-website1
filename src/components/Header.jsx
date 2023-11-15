@@ -16,7 +16,8 @@ function Header( {setShowCart,setShowSideNav} ) {
  
 
 
- const handleSignOut = async() => {
+ const handleSignOut = async(e) => {
+  e.preventDefault()
     try {
       await Logout()
       navigate('/')
@@ -25,7 +26,8 @@ function Header( {setShowCart,setShowSideNav} ) {
     }
  }
 
- const navigateToBrands = () => {   
+ const navigateToBrands = (e) => { 
+  e.preventDefault()  
   navigate('/main')
 }
 
@@ -38,8 +40,8 @@ function Header( {setShowCart,setShowSideNav} ) {
               <div className="text-2xl cursor-pointer flex">🛒 <span className="hidden md:block">ShopRich</span></div>
             </div>
             <ul className="hidden md:flex gap-5 font-medium text-DarkBlue">
-                <NavLink className='px-3 py-1 rounded-xl' to='/main'>Shop</NavLink>
-                <NavLink className='px-3 py-1 rounded-xl' to='/main/products'>Products</NavLink>
+                <Link className='px-3 py-1 rounded-xl' to='/main'>Shop</Link>
+                <Link className='px-3 py-1 rounded-xl' to='/main/products'>Products</Link>
                 <a onClick={navigateToBrands} className='px-3 py-1 rounded-xl' href='#brands'>Brands</a>
             </ul>
 
@@ -56,7 +58,7 @@ function Header( {setShowCart,setShowSideNav} ) {
                           <span className="w-full flex justify-end text-base cursor-pointer" onClick={() => setshowProfile(false)}><FaX size={10}/></span>
                            <span className="w-[50px] h-[50px] bg-gray-500 border-4 rounded-full flex justify-center items-center"><PersonIcon /></span>
                           <span>{username || "user"}</span>
-                          <span>{user.email}</span>
+                          <span>{user && user.email}</span>
                           <button onClick={handleSignOut} className="p-2  border w-full bg-LightBlue text-white">Logout</button>
                        </div>}
                     </div>

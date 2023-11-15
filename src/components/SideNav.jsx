@@ -18,7 +18,7 @@ function SideNav( {showSideNav,setShowSideNav}) {
              <p className='w-full p-3 bg-DarkBlue text-white text-xl'>ShopRich</p>
             <ul className="flex flex-col text-xl p-2">
                 <NavLink onClick={() =>setShowSideNav(false)} className='px-3 py-1 rounded-xl cursor-pointer hover:bg-black/10' to='/main'>Shop</NavLink>
-                <NavLink onClick={() =>setShowSideNav(false)} className='px-3 py-1 rounded-xl cursor-pointer hover:bg-black/10' to='/main/newarrivals'>All goods</NavLink>
+                <NavLink onClick={() =>setShowSideNav(false)} className='px-3 py-1 rounded-xl cursor-pointer hover:bg-black/10' to='/main/products'>All goods</NavLink>
                 <li onClick={navigateToBrands} className='px-3 py-1 rounded-xl cursor-pointer hover:bg-black/10' href='#brands'>Brands</li>
             </ul>
     </div>

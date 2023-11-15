@@ -44,7 +44,7 @@ function ProductCard( {product,setProductDetails,grid}) {
   return (
     <div className='border p-2 shadow flex  gap-1 relative' style={{width: grid? "min(100%,250px)": "min(100%,400px)", flexDirection: grid? "column" : "row", height: grid? "300px" : "120px"}}>
         <div className='flex justify-center items-center text-[3rem] p-2 overflow-hidden ' style={{width: grid? "100%": "100px", height: grid? "" : "100px"}}>
-           <img src={product.images[0] || product.category[image]} className='w-full h-full rounded-xl'/>
+           <img src={(product.images.length > 0) && product.images[0]} className='w-full h-full rounded-xl' alt='img'/>
         </div>
 
         <Link to={`/main/products/${product.id}`} onClick={showProductDetails} className='flex justify-between items-center border hover:bg-black/10 duration-300' style={{position: grid? "static": "absolute", top: "5px" , right:"5px", width: grid?"100%" :"50%"}}>
