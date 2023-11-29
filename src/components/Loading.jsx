@@ -1,10 +1,10 @@
 
 function Loading({styles,Instances}) {
-    const result = [];
+   
+   const result = [];
     for (let i = 1; i <= Instances; i++) {
         result.push(i);
     }
-  
 
   return (
     <>

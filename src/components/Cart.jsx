@@ -74,3 +74,7 @@ Cart.length > 0 && console.log(Cart[0].product.id, "carrrt")
 }
 
 export default Cart
+
+
+
+

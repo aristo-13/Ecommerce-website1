@@ -8,23 +8,40 @@ import Home from "./pages/Home"
 import NewArrivals from "./pages/AllProducts"
 
 function App() {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-     <Route>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="main" element={<ProtectiveRoute><Main /></ProtectiveRoute>}>
-         
-          <Route index element={<Home />} />
-          
-          <Route path="products" element={<NewArrivals />} />
-          <Route path="products/:id" element={<NewArrivals />} />
-          </Route>
-      </Route>
-    </Route>
-    )
-  )
+  const router = createBrowserRouter([
+    {
+      /* path: "/",
+      element: <Layout />,
+      children: [
+        {
+          index: true,
+          element: <SignIn />
+        },
+        {
+          path: "signup",
+          element: <SignUp />
+        }, */
+        
+          path: "/",
+          element: <Main />,
+          children: [
+            {
+              index: true,
+              element: <Home />
+            },
+            {
+              path: "products",
+              element: <NewArrivals />
+            },
+            {
+              path: "products/:id",
+              element: <NewArrivals />
+            }
+          ]
+        }
+      
+  ]);
+  
 
   return (
     <>

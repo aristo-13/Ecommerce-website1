@@ -47,7 +47,7 @@ function ProductCard( {product,setProductDetails,grid}) {
            <img src={(product.images.length > 0) && product.images[0]} className='w-full h-full rounded-xl' alt='img'/>
         </div>
 
-        <Link to={`/main/products/${product.id}`} onClick={showProductDetails} className='flex justify-between items-center border hover:bg-black/10 duration-300' style={{position: grid? "static": "absolute", top: "5px" , right:"5px", width: grid?"100%" :"50%"}}>
+        <Link to={`/products/${product?.id}`} onClick={showProductDetails} className='flex justify-between items-center border hover:bg-black/10 duration-300' style={{position: grid? "static": "absolute", top: "5px" , right:"5px", width: grid?"100%" :"50%"}}>
             <div className='flex flex-col p-2'>
                <p className='text-[1.1rem] font font-medium'>${product.price}</p> 
                <p className='uppercase text-DarkBlue/60 text-[0.8rem]'>{product.name}</p>

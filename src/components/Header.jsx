@@ -28,7 +28,7 @@ function Header( {setShowCart,setShowSideNav} ) {
 
  const navigateToBrands = (e) => { 
   e.preventDefault()  
-  navigate('/main')
+  navigate('/')
 }
 
   return (
@@ -40,8 +40,8 @@ function Header( {setShowCart,setShowSideNav} ) {
               <div className="text-2xl cursor-pointer flex">🛒 <span className="hidden md:block">ShopRich</span></div>
             </div>
             <ul className="hidden md:flex gap-5 font-medium text-DarkBlue">
-                <Link className='px-3 py-1 rounded-xl' to='/main'>Shop</Link>
-                <Link className='px-3 py-1 rounded-xl' to='/main/products'>Products</Link>
+                <Link className='px-3 py-1 rounded-xl' to='/'>Shop</Link>
+                <Link className='px-3 py-1 rounded-xl' to='products'>Products</Link>
                 <a onClick={navigateToBrands} className='px-3 py-1 rounded-xl' href='#brands'>Brands</a>
             </ul>
 
